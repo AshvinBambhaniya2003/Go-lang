@@ -1,6 +1,11 @@
 package main
 
 import "fmt"
+import "bufio"
+import "os"
+import "strconv"
+import "strings"
+
 
 // jwttoken := 300000  connot declare this type
 var jwttoken = 4500
@@ -8,23 +13,20 @@ var jwttoken = 4500
 const LoginToken string = "asjvon" 
 
 func main()  {
-	var username string = "ashvin"
-	fmt.Println(username)
-	fmt.Printf("variable of type %T \n",username)
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Println("enter the rating for pizza:")
 
-	var isLogin bool = false
-	fmt.Println(isLogin)
-	fmt.Printf("variable of type %T \n",isLogin)
+	// comma ok or err ok
 
-	// defult value of int
-	var anotherint int
-	fmt.Println(anotherint)
-	fmt.Printf("variable of type %T \n",anotherint)
+	input , _ := reader.ReadString('\n')
+	fmt.Println("thank for ratindg")
+	fmt.Printf("type of input %T",input)
 
-	numberoduser := 4000
-	fmt.Println(numberoduser)
+	numRating,err  := strconv.ParseFloat(strings.TrimSpace(input),64)
 
-	fmt.Println(jwttoken)
-	fmt.Println(LoginToken)
-
+	if err != nil {
+		fmt.Println(err)
+	}else{
+		fmt.Println("added 1 to your rating",numRating+1)
+	}
 }
