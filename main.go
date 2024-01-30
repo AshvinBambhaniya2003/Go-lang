@@ -1,43 +1,27 @@
 package main
 
 import "fmt"
-import "sort"
+// import "sort"
 // import "os"
 // import "strconv"
 // import "strings"
 
 
 func main()  {
-	var fruits = []string{}
-	fmt.Printf("%T \n",fruits)
+	lang := make(map[string]int)
+	lang["a"] = 1
+	lang["b"] = 2
+	lang["c"] = 3 
+	lang["d"] = 4 
 
-	fruits = append(fruits, "a", "b", "c" , "d", "e")
-	fmt.Println(fruits)
+	fmt.Println(lang)
+	fmt.Println(lang["a"])
 
-	fruits = append(fruits[1:3])
-	fmt.Println(fruits)
+	delete(lang,"b")
+	fmt.Println(lang)
 
-	highScore := make([]int,4)
-	highScore[0] = 5
-	highScore[1] = 2
-	highScore[2] = 1
-	highScore[3] = 4
-	// highScore[4] = 1  --> this will show error
-
-	highScore = append(highScore, 3,9,7)
-
-	fmt.Println(highScore)
-
-	sort.Ints(highScore)  //sort integer slice
-
-	fmt.Println(highScore)
-
-	var corses = []string{"a","b","c","d","e","f"}
-	fmt.Println(corses)
-
-	index := 2
-
-	corses = append(corses[:index],corses[index+1:]...)
-	fmt.Println(corses)
-
+	for key,value := range lang {
+		fmt.Printf("key: %v -> value %v ",key,value)
+	}
+	
 }
