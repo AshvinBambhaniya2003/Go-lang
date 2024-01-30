@@ -8,13 +8,13 @@ import "fmt"
 
 
 func main()  {
-	var demoptr *int 
-	fmt.Println(demoptr)
-
-	mynumer  := 45
-	var ptr = &mynumer
-	fmt.Println(ptr,*ptr)
-
-	*ptr = *ptr + 45
-	fmt.Println(mynumer)
-}
+	var fruits [4]string
+	fruits[0] = "a"
+	fruits[1] = "a"
+	fruits[2] = "a"
+	fruits[3] = "a"
+	// fruits[4] = "a"
+	fmt.Println(fruits)
+	fmt.Println(len(fruits))
+	fmt.Printf("%T",fruits)
+} 
