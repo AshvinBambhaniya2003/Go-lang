@@ -1,20 +1,43 @@
 package main
 
 import "fmt"
-// import "bufio"
+import "sort"
 // import "os"
 // import "strconv"
 // import "strings"
 
 
 func main()  {
-	var fruits [4]string
-	fruits[0] = "a"
-	fruits[1] = "a"
-	fruits[2] = "a"
-	fruits[3] = "a"
-	// fruits[4] = "a"
+	var fruits = []string{}
+	fmt.Printf("%T \n",fruits)
+
+	fruits = append(fruits, "a", "b", "c" , "d", "e")
 	fmt.Println(fruits)
-	fmt.Println(len(fruits))
-	fmt.Printf("%T",fruits)
-} 
+
+	fruits = append(fruits[1:3])
+	fmt.Println(fruits)
+
+	highScore := make([]int,4)
+	highScore[0] = 5
+	highScore[1] = 2
+	highScore[2] = 1
+	highScore[3] = 4
+	// highScore[4] = 1  --> this will show error
+
+	highScore = append(highScore, 3,9,7)
+
+	fmt.Println(highScore)
+
+	sort.Ints(highScore)  //sort integer slice
+
+	fmt.Println(highScore)
+
+	var corses = []string{"a","b","c","d","e","f"}
+	fmt.Println(corses)
+
+	index := 2
+
+	corses = append(corses[:index],corses[index+1:]...)
+	fmt.Println(corses)
+
+}
