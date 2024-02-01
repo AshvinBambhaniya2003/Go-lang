@@ -5,17 +5,18 @@ import (
 )
 
 func main() {
-	emp3 := struct {
-		firstName string
-		lastName  string
-		age       int
-		salary    int
-	}{
-		firstName: "Andreah",
-		lastName:  "Nikola",
-		age:       31,
-		salary:    5000,
+	a := func() {
+		fmt.Println("hello world first class function")
 	}
+	a()
+	fmt.Printf("%T\n", a)
 
-	fmt.Println("Employee 3", emp3)
+	func() {
+		fmt.Println("hello world first class function")
+	}()  // here () is instantly call the anonymous functions 
+
+	func(n string) {
+		fmt.Println("Welcome", n)
+	}("Gophers")
+	
 }
