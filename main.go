@@ -3,15 +3,19 @@ package main
 import "fmt"
 
 func main() {
-	ashvin := User{"ashvin", "ashvin@gmai.com", true, 20}
-	fmt.Println(ashvin)
-	fmt.Printf("details of ashvin is %+v\n", ashvin)
-	fmt.Printf("name is %v and email is %v", ashvin.Name, ashvin.Email)
-}
+	age := 455
 
-type User struct {
-	Name   string
-	Email  string
-	Status bool
-	Age    int
+	if age < 18 {
+		fmt.Println("you can not drive")
+	} else if age > 50 {
+		fmt.Println("you are very old to drive")
+	} else {
+		fmt.Println("you can drive")
+	}
+
+	if varnum := 1; varnum < 10 {
+		fmt.Println("number is less than 10")
+	} else {
+		fmt.Println("number is grater than 10")
+	}
 }
