@@ -1,18 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-
-	defer fmt.Println("one")
-	defer fmt.Println("two")
-	defer fmt.Println("three")
-	fmt.Println("hello world")
-	myDefer()
-}
-
-func myDefer(){
-	for i := 0; i < 5; i++ {
-		defer fmt.Println(i)
+	emp3 := struct {
+		firstName string
+		lastName  string
+		age       int
+		salary    int
+	}{
+		firstName: "Andreah",
+		lastName:  "Nikola",
+		age:       31,
+		salary:    5000,
 	}
+
+	fmt.Println("Employee 3", emp3)
 }
