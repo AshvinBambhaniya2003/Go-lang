@@ -3,38 +3,28 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("hello from main")
-	greet()
+	ashvin := User{"ashvin", "ashvin@gmai.com", true, 20}
+	fmt.Println(ashvin)
+	// fmt.Printf("details of ashvin is %+v\n", ashvin)
+	// fmt.Printf("name is %v and email is %v", ashvin.Name, ashvin.Email)
 
-	// func greest()  {
-	// 	fmt.Println("namste")
-	// }  -->this is not allow
-
-	result := sum(4,5)
-
-	fmt.Println(result)
-
-	// proresult := prosum(4,5,5,1,0,5)
-
-	proRes, proMessage := prosum(4,5,6,1,7)
-
-	fmt.Println(proRes,proMessage)
+	ashvin.GetStatus()
+	ashvin.newMail()
+	fmt.Println(ashvin)  //original value is change only the copy of object is pass
 }
 
-func sum(a int , b int) int {
-	return a + b
+type User struct {
+	Name   string
+	Email  string
+	Status bool
+	Age    int
 }
 
-func prosum(values ...int) (int, string){
-	total := 0
-
-	for _, val := range values{
-		total = total + val
-	}
-
-	return total,"hi from pro result function"
+func (u User) GetStatus(){
+	fmt.Println("is user active: ",u.Status)
 }
 
-func greet()  {
-	fmt.Println("namste")
+func (u User) newMail() {
+	u.Email = "ashvinbambhaniya@gmail.com"
+	fmt.Println("email is :",u.Email)
 }
