@@ -3,19 +3,33 @@ package main
 import "fmt"
 
 func main() {
-	age := 455
+	days := []string{"sun", "mon", "tue", "wen", "thur", "friday", "saturday"}
 
-	if age < 18 {
-		fmt.Println("you can not drive")
-	} else if age > 50 {
-		fmt.Println("you are very old to drive")
-	} else {
-		fmt.Println("you can drive")
+	for i := 0; i < len(days); i++ {
+		fmt.Println(days[i])
 	}
 
-	if varnum := 1; varnum < 10 {
-		fmt.Println("number is less than 10")
-	} else {
-		fmt.Println("number is grater than 10")
+	for _, day := range days {
+		fmt.Printf("value is %v\n", day)
 	}
+
+	roughval := 1
+
+	for roughval < 10 {
+
+		if roughval == 5 {
+			roughval++
+			// continue
+			// break
+			goto lco
+		}
+		fmt.Println(roughval)
+		roughval++
+	}
+	fmt.Println("outer of lco")
+lco:
+	fmt.Println("in goto statement")
+
+	fmt.Println("outer of lco")
+
 }
