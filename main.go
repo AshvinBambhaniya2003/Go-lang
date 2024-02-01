@@ -1,27 +1,17 @@
 package main
 
 import "fmt"
-// import "sort"
-// import "os"
-// import "strconv"
-// import "strings"
 
+func main() {
+	ashvin := User{"ashvin", "ashvin@gmai.com", true, 20}
+	fmt.Println(ashvin)
+	fmt.Printf("details of ashvin is %+v\n", ashvin)
+	fmt.Printf("name is %v and email is %v", ashvin.Name, ashvin.Email)
+}
 
-func main()  {
-	lang := make(map[string]int)
-	lang["a"] = 1
-	lang["b"] = 2
-	lang["c"] = 3 
-	lang["d"] = 4 
-
-	fmt.Println(lang)
-	fmt.Println(lang["a"])
-
-	delete(lang,"b")
-	fmt.Println(lang)
-
-	for key,value := range lang {
-		fmt.Printf("key: %v -> value %v ",key,value)
-	}
-	
+type User struct {
+	Name   string
+	Email  string
+	Status bool
+	Age    int
 }
