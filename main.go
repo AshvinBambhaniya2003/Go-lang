@@ -2,28 +2,40 @@ package main
 
 import (
 	"fmt"
-	"io"
-	"net/http"
+	// "io"
+	// "net/http"
+	"net/url"
 )
 
-const Url = "https://lco.dev"
+const Url = "https://courses.learncodeonline.in:443/learn/account/signup?signInToPay=133333&priceId=61135"
 
 func main() {
 
-	response, err := http.Get(Url)
+	result, _ := url.Parse(Url)
+	fmt.Println(result)
 
-	checkNilerr(err)
 
-	fmt.Printf("response type is %T",response)
+	fmt.Println(result.Scheme)
+	fmt.Println(result.Host)
+	fmt.Println(result.Path)
+	fmt.Println(result.RawQuery)
+	fmt.Println(result.Port())
 
-	defer response.Body.Close()
+	qparams := result.Query()
 
-	databytes, err := io.ReadAll(response.Body)
+	for _, v := range qparams {
+		fmt.Println(v)
+	}
 
-	checkNilerr(err)
+	partsofUrl := &url.URL {
+		Scheme: "https",
+		Host: "ashvinbambhaniya.netlify.com",
+		Path: "/",
+		RawQuery: "",
+	}
 
-	fmt.Println(string(databytes))
-
+	anotherurl := partsofUrl.String()
+	fmt.Println(anotherurl)
 }
 
 func checkNilerr(err error) {
