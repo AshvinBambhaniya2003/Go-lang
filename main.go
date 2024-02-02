@@ -3,37 +3,27 @@ package main
 import (
 	"fmt"
 	"io"
-	"io/ioutil"
-	"os"
+	"net/http"
 )
+
+const Url = "https://lco.dev"
 
 func main() {
 
-	content := "this is need to go in file ans my also "
-
-	file, err := os.Create("./mylcogifile.txt")
-
-	// if err != nil {
-	// 	panic(err)
-	// }
+	response, err := http.Get(Url)
 
 	checkNilerr(err)
 
-	length, err := io.WriteString(file, content)
+	fmt.Printf("response type is %T",response)
+
+	defer response.Body.Close()
+
+	databytes, err := io.ReadAll(response.Body)
 
 	checkNilerr(err)
 
-	fmt.Println(length)
-	defer file.Close()
-	readFile("./mylcodgifile.txt")
-}
+	fmt.Println(string(databytes))
 
-func readFile(filename string) {
-	databyte, err := ioutil.ReadFile(filename)
-	checkNilerr(err)
-
-	fmt.Println("data byte is ", databyte)
-	fmt.Println("data is:", string(databyte))
 }
 
 func checkNilerr(err error) {
