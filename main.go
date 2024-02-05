@@ -2,39 +2,32 @@ package main
 
 import "fmt"
 
-type Age interface {
-	int64 | int32 | float32 | float64 
+type Number interface {
+	int16 | int32 | int64 | float32 | float64 
 }
 
-func newGenericFunc[age int64 | float64](myAge age) {
-	val := int(myAge) + 1
-	fmt.Println(val)
-}
-
-
-func newGenericFuncAny[age any](myAge age) {
-	// val := int(myAge) + 1  // type casting : this is also not allowed 
-	// fmt.Println(val)
-	fmt.Println(myAge)
-}
-
-func newGenericFuncInterface[age Age](myAge age) {
-	val := int(myAge) + 1
-	fmt.Println(val)
+func BubbleSort[N Number](input []N) []N {
+	n := len(input)
+	swapped := true
+	for swapped {
+		swapped = false
+		for i := 0; i < n-1; i++ {
+		  	if input[i] > input[i+1] {
+				input[i], input[i+1] = input[i+1], input[i]
+				swapped = true
+		  	}
+		}
+	}
+	return input
 }
 
 func main() {
 	fmt.Println("Go Generics Tutorial")
-	var testAge int64 = 23
-	var testAge2 float64 = 24.5
+	list := []int32{4,3,1,5,}
+	list2 := []float64{4.3, 5.2, 10.5, 1.2, 3.2,}
+	sorted := BubbleSort(list)
+	fmt.Println(sorted)
 
-	newGenericFunc(testAge)
-	newGenericFunc(testAge2)
-	// newGenericFunc(testString)  --> this is not allowed
-
-	var testString string = "Elliot"
-
-	newGenericFuncAny(testAge)
-	newGenericFuncAny(testAge2)
-	newGenericFuncAny(testString)
+	sortedFloats := BubbleSort(list2)
+	fmt.Println(sortedFloats)
 }
