@@ -1,38 +1,32 @@
-// Program to pass pointer as a function argument
+// Program to illustrate call by reference
 
 package main
 import "fmt"
 
-// function definition with a pointer argument
-func update(num *int) {
+// call by value
+func callByValue(num int) {
 
-  // dereference the pointer
-  *num = 30
+  num = 30
+  fmt.Println( num) // 30
 
 } 
 
-// Program to return a pointer from a function
-func display() *string {
+// call by reference
+func callByReference(num *int) {
+    
+  *num = 10
+  fmt.Println(*num) // 10
 
-	message := "Programiz"
-  
-	// returns the address of message
-	return &message
-  
-  }
+} 
 
 func main() {
  
-  var number = 55
+  var number int
 
-  // function call
-  update(&number)
-  
-  fmt.Println("The number is", number)
+  // passing value
+  callByValue(number)
 
-  // function call
-  result := display() 
-  fmt.Println("Welcome to", *result)
+  // passing a reference (address)
+  callByReference(&number)
 
 }
-
