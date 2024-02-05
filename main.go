@@ -1,38 +1,38 @@
+// Program to pass pointer as a function argument
+
 package main
 import "fmt"
 
-// empty interface as function parameter
-func displayValue(i interface {}) {
-  fmt.Println(i)
-}
+// function definition with a pointer argument
+func update(num *int) {
 
-// function with an empty interface as its parameter
-func displayValueMultiple(i... interface {}) {
-	fmt.Println(i)
+  // dereference the pointer
+  *num = 30
+
+} 
+
+// Program to return a pointer from a function
+func display() *string {
+
+	message := "Programiz"
+  
+	// returns the address of message
+	return &message
+  
   }
 
 func main() {
+ 
+  var number = 55
 
-  a := "Welcome to Programiz"
-  b := 20
-  c := false
+  // function call
+  update(&number)
+  
+  fmt.Println("The number is", number)
 
-  // pass string to the function 
-  displayValue(a)
-
-  // pass integer number to the function
-  displayValue(b)
-
-  // pass boolean value to the function
-  displayValue(c)
-
-  // function call with a single parameter
-  displayValueMultiple(a)
-
-  // function call with 2 parameters
-  displayValueMultiple(a, b)
-
-  // function call with 3 parameters
-  displayValueMultiple(a, b, c)
+  // function call
+  result := display() 
+  fmt.Println("Welcome to", *result)
 
 }
+
